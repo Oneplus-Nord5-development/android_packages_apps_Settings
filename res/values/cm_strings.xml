@@ -15,6 +15,10 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Three-fingers-swipe to screenshot -->
+    <string name="three_finger_gesture">Swipe to screenshot</string>
+    <string name="three_finger_gesture_summary">Swipe down with three fingers to take a screenshot</string>
+
     <!-- Private DNS -->
     <string name="private_dns_mode_cloudflare" translatable="false">Cloudflare DNS</string>
     <!-- Alternative: 1dot1dot1dot1.cloudflare-dns.com -->
