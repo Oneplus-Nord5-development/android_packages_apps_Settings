@@ -129,6 +129,7 @@ android_library {
         // Lineage dependencies
         "org.lineageos.platform.internal",
         "LineagePreferenceLib",
+        "custom-preference",
     ],
 
     plugins: [
