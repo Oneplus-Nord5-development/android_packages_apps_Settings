@@ -140,4 +140,12 @@
         android:order="-30"
         android:fragment="com.android.settings.system.ResetDashboardFragment"
         settings:controller="com.android.settings.system.ResetPreferenceController"/>
+
+    <!-- Mica Lab -->
+    <Preference
+        android:key="lab_settings"
+        android:title="@string/lab_settings_title"
+        android:icon="@drawable/ic_lab_settings"
+        android:order="-25"
+        android:fragment="com.android.settings.mica.LabSettings"/>
 </PreferenceScreen>
