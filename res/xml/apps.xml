@@ -60,6 +60,12 @@
         android:order="-996"
         settings:controller="com.android.settings.applications.DefaultAppsPreferenceController"/>
 
+        <Preference
+            android:key="running_apps"
+            android:title="@string/active_applications_title"
+            android:summary="@string/active_applications_summary"
+            android:fragment="com.android.settings.applications.RunningServices" />
+
     <Preference
         android:key="cloned_apps"
         android:title="@string/cloned_apps_dashboard_title"
