@@ -72,3 +72,6 @@
 
 # Keep the device state AppFunction schema
 -keep class com.google.android.appfunctions.schema.common.v1.devicestate.** { *; }
+
+# MicaLab
+-keep class com.android.settings.mica.**

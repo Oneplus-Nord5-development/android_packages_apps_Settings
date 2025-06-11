@@ -237,5 +237,9 @@
     <string name="three_finger_gesture_summary">Swipe down with three fingers to take a screenshot</string>
 
     <!-- Mica Lab Settings -->
-    <string name="lab_settings_title">Mica Lab</string>
+    <string name="lab_settings_title">Lineage extras</string>
+
+   <!-- Keybox Data -->
+    <string name="keybox_data_title">Select keybox XML to spoof</string>
+    <string name="keybox_data_summary">Select keybox XML used for key attestation spoofing for all apps system wide. Click the delete button in order to reset the keybox data values used by the system.</string>
 </resources>
