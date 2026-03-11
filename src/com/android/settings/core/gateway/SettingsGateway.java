@@ -411,6 +411,8 @@ public class SettingsGateway {
             NumberingSystemLocaleListFragment.class.getName(),
             BatteryInfoFragment.class.getName(),
             UserAspectRatioDetails.class.getName(),
+            com.android.settings.display.RefreshRateSettingsFragment.class.getName(),
+            com.android.settings.display.RefreshRateAppDetails.class.getName(),
             ScreenTimeoutSettings.class.getName(),
             ResetNetwork.class.getName(),
             VibrationIntensitySettingsFragment.class.getName(),

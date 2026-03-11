@@ -87,6 +87,29 @@
     <!-- Min refresh rate -->
     <string name="min_refresh_rate_title">Minimum refresh rate</string>
 
+    <!-- Refresh rate settings page title -->
+    <string name="refresh_rate_settings_title">Refresh rate</string>
+    <!-- Summary for refresh rate settings entry -->
+    <string name="refresh_rate_settings_summary">Set display refresh rate limits and per-app rules</string>
+    <!-- Refresh rate settings intro title -->
+    <string name="refresh_rate_intro_title">Smoother motion</string>
+    <!-- Refresh rate settings intro summary -->
+    <string name="refresh_rate_intro_summary">This device supports up to %1$d Hz. Higher refresh rates can look smoother than 60 Hz.</string>
+    <!-- Refresh rate settings category title -->
+    <string name="refresh_rate_window_title">Refresh rate window</string>
+    <!-- Extreme refresh rate toggle title -->
+    <string name="extreme_refresh_rate_title">Extreme refresh rate</string>
+    <!-- Extreme refresh rate toggle summary -->
+    <string name="extreme_refresh_rate_summary">Force the display to run at the highest supported refresh rate</string>
+    <!-- Per-app refresh rate title -->
+    <string name="per_app_refresh_rate_title">Per-app refresh rate</string>
+    <!-- Per-app refresh rate summary -->
+    <string name="per_app_refresh_rate_summary">Set refresh rate limits for individual apps</string>
+    <!-- Per-app refresh rate default option -->
+    <string name="refresh_rate_app_default">App default</string>
+    <!-- Per-app refresh rate range summary -->
+    <string name="refresh_rate_app_range_summary">Min %1$s, Max %2$s</string>
+
     <!-- Message shown in fingerprint enrollment dialog to locate the sensor -->
     <string name="fingerprint_enroll_find_sensor_message_front" product="tablet">Locate the fingerprint sensor on the front of your tablet.</string>
     <string name="fingerprint_enroll_find_sensor_message_front" product="device">Locate the fingerprint sensor on the front of your device.</string>
