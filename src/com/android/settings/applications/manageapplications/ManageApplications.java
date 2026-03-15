@@ -275,6 +275,7 @@ public class ManageApplications extends InstrumentedFragment
     public static final int LIST_TYPE_USER_ASPECT_RATIO_APPS = 20;
     public static final int LIST_TYPE_NOTIFICATION_EXCLUDE_SUMMARIZATION = 21;
     public static final int LIST_TYPE_NOTIFICATION_EXCLUDE_CLASSIFICATION = 22;
+    public static final int LIST_TYPE_PER_APP_REFRESH_RATE_APPS = 23;
 
     // List types that should show instant apps.
     public static final Set<Integer> LIST_TYPES_WITH_INSTANT = new ArraySet<>(Arrays.asList(
