@@ -194,6 +194,7 @@ import com.android.settings.regionalpreferences.RegionalPreferencesEntriesFragme
 import com.android.settings.regionalpreferences.TemperatureUnitFragment;
 import com.android.settings.safetycenter.MoreSecurityPrivacyFragment;
 import com.android.settings.safetycenter.ui.SafetyCenterFragment;
+import com.android.settings.security.AppLockSettings;
 import com.android.settings.security.ContentProtectionPreferenceFragment;
 import com.android.settings.security.LockscreenDashboardFragment;
 import com.android.settings.security.MemtagPage;
@@ -270,6 +271,7 @@ public class SettingsGateway {
             PrivacyControlsFragment.class.getName(),
             LocationServices.class.getName(),
             SecuritySettings.class.getName(),
+            AppLockSettings.class.getName(),
             SecurityAdvancedSettings.class.getName(),
             MoreSecurityPrivacyFragment.class.getName(),
             UsageAccessDetails.class.getName(),

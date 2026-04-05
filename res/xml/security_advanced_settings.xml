@@ -113,6 +113,14 @@
         settings:keywords="@string/keywords_app_pinning"
         settings:controller="com.android.settings.security.ScreenPinningPreferenceController" />
 
+    <Preference
+        android:order="290"
+        android:key="cm_app_lock"
+        android:title="@string/cm_app_lock_title"
+        android:summary="@string/cm_app_lock_summary"
+        android:fragment="com.android.settings.security.AppLockSettings"
+        settings:keywords="@string/cm_app_lock_title" />
+
   <com.android.settingslib.RestrictedPreference
         android:order="300"
         android:id="@+id/memtag_page"

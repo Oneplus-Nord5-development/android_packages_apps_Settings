@@ -81,6 +81,14 @@
             android:targetPackage="${applicationId}"/>
     </Preference>
 
+    <Preference
+        android:order="-994"
+        android:key="cm_app_lock"
+        android:title="@string/cm_app_lock_title"
+        android:summary="@string/cm_app_lock_summary"
+        android:fragment="com.android.settings.security.AppLockSettings"
+        settings:keywords="@string/cm_app_lock_title" />
+
     <PreferenceCategory
         android:key="dashboard_tile_placeholder"
         android:order="10"/>

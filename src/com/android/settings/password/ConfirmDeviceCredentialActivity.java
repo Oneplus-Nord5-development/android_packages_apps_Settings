@@ -479,7 +479,7 @@ public class ConfirmDeviceCredentialActivity extends FragmentActivity {
         super.onPause();
         if (!isChangingConfigurations()) {
             mGoingToBackground = true;
-            if (!mWaitingForBiometricCallback) {
+            if (!mWaitingForBiometricCallback && !isFinishing()) {
                 finish();
             }
         } else {

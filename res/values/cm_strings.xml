@@ -217,7 +217,17 @@
     <string name="cycle_type_weekly_sub">Day of each week:\n1 = Monday</string>
     <string name="cycle_type_daily_title">Usage cycle reset hour</string>
     <string name="cycle_type_daily_sub">Hour of each day:</string>
-    
+
+    <!-- App Lock -->
+    <string name="cm_app_lock_title">App Lock</string>
+    <string name="cm_app_lock_summary">Lock selected apps with your screen lock</string>
+    <string name="cm_app_lock_biometrics_title">Use biometrics</string>
+    <string name="cm_app_lock_biometrics_summary">Allow strong biometrics to unlock locked apps</string>
+    <string name="cm_app_lock_apps_title">Locked apps</string>
+    <string name="cm_app_lock_footer">Locked apps ask for authentication again after you leave them or turn off the screen.</string>
+    <string name="cm_app_lock_requires_screen_lock_summary">Set a screen lock to use App Lock</string>
+    <string name="cm_app_lock_no_apps">No eligible apps available</string>
+
     <!-- Three-fingers-swipe to screenshot -->
     <string name="three_finger_gesture">Swipe to screenshot</string>
     <string name="three_finger_gesture_summary">Swipe down with three fingers to take a screenshot</string>
