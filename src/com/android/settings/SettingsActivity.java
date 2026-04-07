@@ -254,8 +254,6 @@ public class SettingsActivity extends SettingsBaseActivity
         if (fragment instanceof Instrumentable) {
             category = ((Instrumentable) fragment).getMetricsCategory();
         }
-        Log.d(LOG_TAG, "MetricsCategory is " + category);
-
         return category;
     }
 
@@ -283,13 +281,10 @@ public class SettingsActivity extends SettingsBaseActivity
         }
 
         super.onCreate(savedState);
-        Log.d(LOG_TAG, "Starting onCreate");
         createUiFromIntent(savedState, intent);
     }
 
     protected void createUiFromIntent(@Nullable Bundle savedState, Intent intent) {
-        long startTime = System.currentTimeMillis();
-
         final FeatureFactory factory = FeatureFactory.getFeatureFactory();
         mDashboardFeatureProvider = factory.getDashboardFeatureProvider();
 
@@ -387,9 +382,6 @@ public class SettingsActivity extends SettingsBaseActivity
             }
         }
 
-        if (DEBUG_TIMING) {
-            Log.d(LOG_TAG, "onCreate took " + (System.currentTimeMillis() - startTime) + " ms");
-        }
     }
 
     private void setActionBarStatus() {
@@ -554,7 +546,6 @@ public class SettingsActivity extends SettingsBaseActivity
     }
 
     private void setTitleFromIntent(Intent intent) {
-        Log.d(LOG_TAG, "Starting to set activity title");
         final int initialTitleResId = intent.getIntExtra(EXTRA_SHOW_FRAGMENT_TITLE_RESID, -1);
         if (initialTitleResId > 0) {
             mInitialTitle = null;
@@ -585,7 +576,6 @@ public class SettingsActivity extends SettingsBaseActivity
             mInitialTitle = (initialTitle != null) ? initialTitle : getTitle();
             setTitle(mInitialTitle);
         }
-        Log.d(LOG_TAG, "Done setting title");
     }
 
     @Override
@@ -734,7 +724,6 @@ public class SettingsActivity extends SettingsBaseActivity
      */
     private void switchToFragment(String fragmentName, Bundle args, boolean validate,
             int titleResId, CharSequence title) {
-        Log.d(LOG_TAG, "Switching to fragment " + fragmentName);
         if (validate && !isValidFragment(fragmentName)) {
             throw new IllegalArgumentException("Invalid fragment for this activity: "
                     + fragmentName);
@@ -752,7 +741,6 @@ public class SettingsActivity extends SettingsBaseActivity
         }
         transaction.commitAllowingStateLoss();
         getSupportFragmentManager().executePendingTransactions();
-        Log.d(LOG_TAG, "Executed frag manager pendingTransactions");
     }
 
     private void updateTilesList() {
@@ -830,11 +818,7 @@ public class SettingsActivity extends SettingsBaseActivity
 
         // Final step, refresh categories.
         if (somethingChanged) {
-            Log.d(LOG_TAG, "Enabled state changed for some tiles, reloading all categories "
-                    + changedList.toString());
             mCategoryMixin.updateCategories();
-        } else {
-            Log.d(LOG_TAG, "No enabled state changed, skipping updateCategory call");
         }
     }
 
@@ -872,7 +856,6 @@ public class SettingsActivity extends SettingsBaseActivity
             }
         } catch (NameNotFoundException nnfe) {
             // No recovery
-            Log.d(LOG_TAG, "Cannot get Metadata for: " + getComponentName().toString());
         }
     }
 
