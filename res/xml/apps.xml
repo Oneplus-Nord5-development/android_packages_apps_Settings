@@ -124,6 +124,17 @@
     </Preference>
 
     <Preference
+        android:key="gamespace"
+        android:title="@string/gamespace_dashboard_title"
+        android:summary="@string/gamespace_dashboard_summary"
+        android:order="18">
+        <intent
+            android:action="com.android.gamespace.action.SETTINGS"
+            android:targetPackage="com.android.gamespace"
+            android:targetClass="com.android.gamespace.GameSpaceSettingsActivity" />
+    </Preference>
+
+    <Preference
         android:key="special_access"
         android:fragment="com.android.settings.applications.specialaccess.SpecialAccessSettings"
         android:title="@string/special_access"

@@ -228,6 +228,10 @@
     <string name="cm_app_lock_requires_screen_lock_summary">Set a screen lock to use App Lock</string>
     <string name="cm_app_lock_no_apps">No eligible apps available</string>
 
+    <!-- GameSpace -->
+    <string name="gamespace_dashboard_title">Game Space</string>
+    <string name="gamespace_dashboard_summary">Enhance your Gaming Experience</string>
+
     <!-- Three-fingers-swipe to screenshot -->
     <string name="three_finger_gesture">Swipe to screenshot</string>
     <string name="three_finger_gesture_summary">Swipe down with three fingers to take a screenshot</string>
