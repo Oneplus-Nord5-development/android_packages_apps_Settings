@@ -140,22 +140,23 @@
         android:title="@string/special_access"
         android:order="20"/>
 
+    <Preference
+        android:key="spoofing"
+        android:title="@string/spoofing_title"
+        android:fragment="com.android.settings.mica.LabSettings"
+        android:order="21" />
+
     <PreferenceCategory
         android:key="advanced_category"
         android:title="@string/advanced_apps"
-        android:order="21"
+        android:order="22"
         settings:searchable="false">
-
-        <Preference
-            android:key="spoofing"
-            android:title="@string/spoofing_title"
-            android:fragment="com.android.settings.mica.LabSettings" />
 
         <Preference
             android:key="aspect_ratio_apps"
             android:title="@string/aspect_ratio_title"
             android:summary="@string/summary_placeholder"
-            android:order="22"
+            android:order="23"
             settings:controller="com.android.settings.applications.appcompat.UserAspectRatioAppsPreferenceController"
             android:fragment="com.android.settings.applications.manageapplications.ManageApplications">
             <extra android:name="classname"

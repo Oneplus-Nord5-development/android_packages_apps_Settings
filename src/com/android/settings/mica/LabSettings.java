@@ -25,6 +25,8 @@ import android.view.View;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.preference.Preference;
+import androidx.preference.SwitchPreference;
+import android.provider.Settings;
 
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
@@ -53,6 +55,18 @@ public class LabSettings extends SettingsPreferenceFragment {
                 }
             }
 	);
+
+        SwitchPreference gamesPropsPreference = findPreference("games_props");
+        if (gamesPropsPreference != null) {
+            gamesPropsPreference.setChecked((Settings.System.getInt(getContentResolver(),
+                    Settings.System.GAMES_PROPS, 0) == 1));
+            gamesPropsPreference.setOnPreferenceChangeListener((preference, newValue) -> {
+                boolean isChecked = (boolean) newValue;
+                Settings.System.putInt(getContentResolver(), Settings.System.GAMES_PROPS,
+                        isChecked ? 1 : 0);
+                return true;
+            });
+        }
     }
 
 
@@ -64,6 +78,14 @@ public class LabSettings extends SettingsPreferenceFragment {
         if (mKeyboxDataPreference != null) {
             mKeyboxDataPreference.setFilePickerLauncher(mKeyboxFilePickerLauncher);
         }
+    }
+
+    @Override
+    public void onDestroyView() {
+        if (mKeyboxDataPreference != null) {
+            mKeyboxDataPreference.setFilePickerLauncher(null);
+        }
+        super.onDestroyView();
     }
 
     @Override

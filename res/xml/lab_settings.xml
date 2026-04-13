@@ -9,4 +9,10 @@
         android:title="@string/keybox_data_title"
         android:summary="@string/keybox_data_summary"
         android:defaultValue=""/>
+
+    <SwitchPreference
+        android:key="games_props"
+        android:title="@string/games_props_title"
+        android:summary="@string/games_props_summary"
+        android:defaultValue="false"/>
 </PreferenceScreen>
