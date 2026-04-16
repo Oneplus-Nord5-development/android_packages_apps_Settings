@@ -67,6 +67,18 @@ public class LabSettings extends SettingsPreferenceFragment {
                 return true;
             });
         }
+
+        SwitchPreference hideMockLocationPreference = findPreference("hide_mock_location");
+        if (hideMockLocationPreference != null) {
+            hideMockLocationPreference.setChecked((Settings.System.getInt(getContentResolver(),
+                    "hide_mock_location", 0) == 1));
+            hideMockLocationPreference.setOnPreferenceChangeListener((preference, newValue) -> {
+                boolean isChecked = (boolean) newValue;
+                Settings.System.putInt(getContentResolver(), "hide_mock_location",
+                        isChecked ? 1 : 0);
+                return true;
+            });
+        }
     }
 
 

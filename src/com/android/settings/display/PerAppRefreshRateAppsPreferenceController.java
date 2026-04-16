@@ -19,11 +19,16 @@ package com.android.settings.display;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceScreen;
 
 import com.android.settings.R;
 import com.android.settings.core.BasePreferenceController;
+import com.android.settings.spa.SpaActivity;
+import com.android.settings.spa.app.display.PerAppRefreshRateAppsPageProvider;
 
-public class PerAppRefreshRateAppsPreferenceController extends BasePreferenceController {
+public class PerAppRefreshRateAppsPreferenceController extends BasePreferenceController
+        implements Preference.OnPreferenceClickListener {
 
     private final PerAppRefreshRateManager mManager;
 
@@ -41,5 +46,20 @@ public class PerAppRefreshRateAppsPreferenceController extends BasePreferenceCon
     @Override
     public CharSequence getSummary() {
         return mContext.getString(R.string.per_app_refresh_rate_summary);
+    }
+
+    @Override
+    public void displayPreference(PreferenceScreen screen) {
+        super.displayPreference(screen);
+        final Preference preference = screen.findPreference(getPreferenceKey());
+        if (preference != null) {
+            preference.setOnPreferenceClickListener(this);
+        }
+    }
+
+    @Override
+    public boolean onPreferenceClick(Preference preference) {
+        SpaActivity.startSpaActivity(mContext, PerAppRefreshRateAppsPageProvider.INSTANCE.getName());
+        return true;
     }
 }

@@ -11,6 +11,12 @@
         android:defaultValue=""/>
 
     <SwitchPreference
+        android:key="hide_mock_location"
+        android:title="@string/hide_mock_location_title"
+        android:summary="@string/hide_mock_location_summary"
+        android:defaultValue="false"/>
+
+    <SwitchPreference
         android:key="games_props"
         android:title="@string/games_props_title"
         android:summary="@string/games_props_summary"
