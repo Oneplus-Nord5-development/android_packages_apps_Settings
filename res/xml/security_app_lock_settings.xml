@@ -23,6 +23,11 @@
         android:title="@string/cm_app_lock_biometrics_title"
         android:summary="@string/cm_app_lock_biometrics_summary" />
 
+    <Preference
+        android:key="cm_app_lock_password"
+        android:title="@string/cm_app_lock_password_title"
+        android:summary="@string/cm_app_lock_password_summary" />
+
     <PreferenceCategory
         android:key="cm_app_lock_apps"
         android:title="@string/cm_app_lock_apps_title" />

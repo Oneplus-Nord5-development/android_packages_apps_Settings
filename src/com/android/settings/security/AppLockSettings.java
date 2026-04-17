@@ -27,6 +27,12 @@ import android.os.Bundle;
 import android.os.UserHandle;
 import android.text.TextUtils;
 import android.util.ArraySet;
+import android.app.AlertDialog;
+import android.text.InputType;
+import android.widget.EditText;
+import java.security.MessageDigest;
+import java.util.Base64;
+import java.util.UUID;
 
 import androidx.annotation.NonNull;
 import androidx.preference.Preference;
@@ -60,6 +66,7 @@ public class AppLockSettings extends SettingsPreferenceFragment
         implements ApplicationsState.Callbacks, Preference.OnPreferenceChangeListener {
 
     private static final String KEY_BIOMETRICS = "cm_app_lock_biometrics";
+    private static final String KEY_PASSWORD = "cm_app_lock_password";
     private static final String KEY_APPS = "cm_app_lock_apps";
     private static final String KEY_FOOTER = "cm_app_lock_footer";
     private static final String KEY_REQUIREMENT_PLACEHOLDER = "cm_app_lock_requirement";
@@ -92,6 +99,14 @@ public class AppLockSettings extends SettingsPreferenceFragment
         mFooterPreference = screen.findPreference(KEY_FOOTER);
 
         mBiometricsPreference.setOnPreferenceChangeListener(this);
+
+        final Preference passwordPref = screen.findPreference(KEY_PASSWORD);
+        if (passwordPref != null) {
+            passwordPref.setOnPreferenceClickListener(preference -> {
+                showPasswordDialog();
+                return true;
+            });
+        }
         mAppsCategory.setOrderingAsAdded(true);
     }
 
@@ -338,6 +353,84 @@ public class AppLockSettings extends SettingsPreferenceFragment
                 mAppsCategory.removePreference(preference);
             }
         }
+    }
+
+    private void showPasswordDialog() {
+        final Context context = requireContext();
+        
+        android.widget.LinearLayout layout = new android.widget.LinearLayout(context);
+        layout.setOrientation(android.widget.LinearLayout.VERTICAL);
+        int padding = (int) (24 * context.getResources().getDisplayMetrics().density);
+        layout.setPadding(padding, padding, padding, padding);
+        
+        android.widget.TextView message = new android.widget.TextView(context);
+        message.setText("Choose a custom credential to lock apps, or leave blank to use device screen lock.");
+        layout.addView(message);
+        
+        android.widget.RadioGroup group = new android.widget.RadioGroup(context);
+        group.setOrientation(android.widget.LinearLayout.HORIZONTAL);
+        android.widget.RadioButton pinBtn = new android.widget.RadioButton(context);
+        pinBtn.setText("PIN");
+        android.widget.RadioButton passBtn = new android.widget.RadioButton(context);
+        passBtn.setText("Password");
+        group.addView(pinBtn);
+        group.addView(passBtn);
+        layout.addView(group);
+        
+        final EditText input = new EditText(context);
+        layout.addView(input);
+        
+        boolean isCurrentlyPin = LineageSettings.Secure.getIntForUser(getContentResolver(),
+                AppLockUtils.LINEAGE_SETTINGS_APP_LOCK_CUSTOM_IS_PIN, 0, UserHandle.myUserId()) == 1;
+        
+        if (isCurrentlyPin) {
+            pinBtn.setChecked(true);
+            input.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_PASSWORD);
+        } else {
+            passBtn.setChecked(true);
+            input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        }
+        
+        group.setOnCheckedChangeListener((group1, checkedId) -> {
+            if (checkedId == pinBtn.getId()) {
+                input.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_PASSWORD);
+            } else {
+                input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            }
+            input.setSelection(input.getText().length());
+        });
+
+        new AlertDialog.Builder(context)
+                .setTitle(R.string.cm_app_lock_password_title)
+                .setView(layout)
+                .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+                    String password = input.getText().toString();
+                    if (TextUtils.isEmpty(password)) {
+                        LineageSettings.Secure.putStringForUser(getContentResolver(),
+                                AppLockUtils.LINEAGE_SETTINGS_APP_LOCK_CUSTOM_PASSWORD,
+                                "", UserHandle.myUserId());
+                    } else {
+                        try {
+                            String salt = UUID.randomUUID().toString();
+                            MessageDigest md = MessageDigest.getInstance("SHA-256");
+                            md.update(salt.getBytes());
+                            byte[] hash = md.digest(password.getBytes());
+                            String encodedHash = Base64.getEncoder().encodeToString(hash);
+                            
+                            LineageSettings.Secure.putIntForUser(getContentResolver(),
+                                    AppLockUtils.LINEAGE_SETTINGS_APP_LOCK_CUSTOM_IS_PIN,
+                                    pinBtn.isChecked() ? 1 : 0, UserHandle.myUserId());
+                            LineageSettings.Secure.putStringForUser(getContentResolver(),
+                                    AppLockUtils.LINEAGE_SETTINGS_APP_LOCK_CUSTOM_SALT,
+                                    salt, UserHandle.myUserId());
+                            LineageSettings.Secure.putStringForUser(getContentResolver(),
+                                    AppLockUtils.LINEAGE_SETTINGS_APP_LOCK_CUSTOM_PASSWORD,
+                                    encodedHash, UserHandle.myUserId());
+                        } catch (Exception e) {}
+                    }
+                })
+                .setNegativeButton(android.R.string.cancel, null)
+                .show();
     }
 
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =

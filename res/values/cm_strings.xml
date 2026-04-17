@@ -223,6 +223,8 @@
     <string name="cm_app_lock_summary">Lock selected apps with your screen lock</string>
     <string name="cm_app_lock_biometrics_title">Use biometrics</string>
     <string name="cm_app_lock_biometrics_summary">Allow strong biometrics to unlock locked apps</string>
+    <string name="cm_app_lock_password_title">App Lock password</string>
+    <string name="cm_app_lock_password_summary">Use a custom password instead of the lock screen credential</string>
     <string name="cm_app_lock_apps_title">Locked apps</string>
     <string name="cm_app_lock_footer">Locked apps ask for authentication again after you leave them or turn off the screen.</string>
     <string name="cm_app_lock_requires_screen_lock_summary">Set a screen lock to use App Lock</string>
