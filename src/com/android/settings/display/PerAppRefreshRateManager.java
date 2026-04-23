@@ -17,7 +17,9 @@
 package com.android.settings.display;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.LauncherApps;
 import android.hardware.display.DisplayManager;
 import android.os.UserHandle;
 import android.provider.Settings;
@@ -27,7 +29,6 @@ import android.view.Display;
 import android.view.Display.Mode;
 
 import androidx.annotation.NonNull;
-import android.content.pm.LauncherApps;
 import androidx.annotation.VisibleForTesting;
 
 import java.util.ArrayList;
@@ -38,6 +39,8 @@ import java.util.TreeSet;
 public class PerAppRefreshRateManager {
     @VisibleForTesting
     static final String SETTING_KEY = "per_app_refresh_rate_ranges";
+
+    private static final int DEFAULT_MIN_REFRESH_RATE = 60;
 
     private final Context mContext;
 
@@ -50,7 +53,8 @@ public class PerAppRefreshRateManager {
     }
 
     public boolean canDisplayRefreshRateUi(@NonNull ApplicationInfo app) {
-        return !mContext.getSystemService(LauncherApps.class)
+        final LauncherApps launcherApps = mContext.getSystemService(LauncherApps.class);
+        return launcherApps != null && !launcherApps
                 .getActivityList(app.packageName, UserHandle.getUserHandleForUid(app.uid))
                 .isEmpty();
     }
@@ -58,7 +62,7 @@ public class PerAppRefreshRateManager {
     @NonNull
     public List<Integer> getSupportedRefreshRates() {
         final DisplayManager dm = mContext.getSystemService(DisplayManager.class);
-        final Display display = dm.getDisplay(Display.DEFAULT_DISPLAY);
+        final Display display = dm != null ? dm.getDisplay(Display.DEFAULT_DISPLAY) : null;
         if (display == null) {
             return Collections.singletonList(60);
         }
@@ -95,12 +99,24 @@ public class PerAppRefreshRateManager {
             overrides.put(packageName, rate);
         }
         persistOverrides(overrides, userId);
+        ensureServiceStarted();
     }
 
     public void clearRefreshRateForPackage(@NonNull String packageName, int userId) {
         final ArrayMap<String, Integer> overrides = getAllOverrides(userId);
         overrides.remove(packageName);
         persistOverrides(overrides, userId);
+        ensureServiceStarted();
+    }
+
+    public float getDefaultMinRefreshRate() {
+        return DEFAULT_MIN_REFRESH_RATE;
+    }
+
+    public float getDefaultPeakRefreshRate() {
+        final List<Integer> supportedRates = getSupportedRefreshRates();
+        return supportedRates.isEmpty() ? DEFAULT_MIN_REFRESH_RATE
+                : supportedRates.get(supportedRates.size() - 1);
     }
 
     @NonNull
@@ -130,6 +146,10 @@ public class PerAppRefreshRateManager {
                 SETTING_KEY,
                 builder.toString(),
                 userId);
+    }
+
+    private void ensureServiceStarted() {
+        mContext.startService(new Intent(mContext, PerAppRefreshRateService.class));
     }
 
     @NonNull
