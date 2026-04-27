@@ -140,11 +140,6 @@
         android:title="@string/special_access"
         android:order="20"/>
 
-    <Preference
-        android:key="spoofing"
-        android:title="@string/spoofing_title"
-        android:fragment="com.android.settings.mica.LabSettings"
-        android:order="21" />
 
     <PreferenceCategory
         android:key="advanced_category"

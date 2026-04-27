@@ -238,18 +238,4 @@
     <string name="three_finger_gesture">Swipe to screenshot</string>
     <string name="three_finger_gesture_summary">Swipe down with three fingers to take a screenshot</string>
 
-    <!-- Spoofing Settings -->
-    <string name="spoofing_title">Spoofing</string>
-
-   <!-- Keybox Data -->
-    <string name="keybox_data_title">Select keybox XML to spoof</string>
-    <string name="keybox_data_summary">Select keybox XML used for key attestation spoofing for all apps system wide. Click the delete button in order to reset the keybox data values used by the system.</string>
-
-    <!-- Hide mock location toggle -->
-    <string name="hide_mock_location_title">Hide mock location</string>
-    <string name="hide_mock_location_summary">Prevent apps from knowing if the location is mocked or spoofed</string>
-
-    <!-- Game Props -->
-    <string name="games_props_title">Spoofing for games</string>
-    <string name="games_props_summary">Spoof device properties for game specific optimizations</string>
 </resources>
