@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res-auto"
+    android:key="app_lock_choose_type">
+
+    <com.android.settingslib.RestrictedPreference
+        android:key="unlock_set_pattern"
+        android:title="@string/unlock_set_unlock_pattern_title"
+        android:icon="@drawable/ic_pattern"
+        android:persistent="false"/>
+
+    <com.android.settingslib.RestrictedPreference
+        android:key="unlock_set_pin"
+        android:title="@string/unlock_set_unlock_pin_title"
+        android:icon="@drawable/ic_lock_pin"
+        android:persistent="false"/>
+
+    <com.android.settingslib.RestrictedPreference
+        android:key="unlock_set_password"
+        android:title="@string/unlock_set_unlock_password_title"
+        android:icon="@drawable/ic_password"
+        android:persistent="false"/>
+
+</PreferenceScreen>

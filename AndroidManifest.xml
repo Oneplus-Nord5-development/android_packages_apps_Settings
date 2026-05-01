@@ -2899,6 +2899,10 @@
         </activity>
 
         <!-- Lock screen settings -->
+        <activity android:name=".security.applock.AppLockCredentialSetupActivity"
+            android:label="Custom App Lock credential"
+            android:theme="@style/Theme.Settings.NoActionBar" />
+
         <activity android:name=".password.ConfirmDeviceCredentialActivity"
             android:exported="true"
             android:taskAffinity="com.android.settings.workmode"
