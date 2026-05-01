@@ -24,7 +24,6 @@ import com.android.settings.spa.about.AboutPhonePageProvider
 import com.android.settings.spa.app.AllAppListPageProvider
 import com.android.settings.spa.app.AppsMainPageProvider
 import com.android.settings.spa.app.appcompat.UserAspectRatioAppsPageProvider
-import com.android.settings.spa.app.display.PerAppRefreshRateAppsPageProvider
 import com.android.settings.spa.app.appinfo.AppInfoSettingsProvider
 import com.android.settings.spa.app.appinfo.CloneAppInfoSettingsProvider
 import com.android.settings.spa.app.backgroundinstall.BackgroundInstalledAppsPageProvider
@@ -116,7 +115,6 @@ open class SettingsSpaEnvironment(context: Context) : SpaEnvironment(context) {
             PlatformCompatAppListPageProvider,
             BackgroundInstalledAppsPageProvider,
             UserAspectRatioAppsPageProvider,
-            PerAppRefreshRateAppsPageProvider,
             CloneAppInfoSettingsProvider,
             NetworkAndInternetPageProvider,
             AboutPhonePageProvider,

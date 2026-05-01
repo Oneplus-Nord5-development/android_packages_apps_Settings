@@ -38,7 +38,6 @@ import com.android.settings.Settings.StorageUseActivity
 import com.android.settings.Settings.TurnScreenOnSettingsActivity
 import com.android.settings.Settings.UsageAccessSettingsActivity
 import com.android.settings.Settings.UserAspectRatioAppListActivity
-import com.android.settings.Settings.PerAppRefreshRateAppListActivity
 import com.android.settings.Settings.WriteSettingsActivity
 import com.android.settings.applications.appinfo.AppLocaleDetails
 import com.android.settings.applications.manageapplications.ManageApplications.LIST_MANAGE_EXTERNAL_STORAGE
@@ -61,12 +60,10 @@ import com.android.settings.applications.manageapplications.ManageApplications.L
 import com.android.settings.applications.manageapplications.ManageApplications.LIST_TYPE_TURN_SCREEN_ON
 import com.android.settings.applications.manageapplications.ManageApplications.LIST_TYPE_USAGE_ACCESS
 import com.android.settings.applications.manageapplications.ManageApplications.LIST_TYPE_USER_ASPECT_RATIO_APPS
-import com.android.settings.applications.manageapplications.ManageApplications.LIST_TYPE_PER_APP_REFRESH_RATE_APPS
 import com.android.settings.applications.manageapplications.ManageApplications.LIST_TYPE_WIFI_ACCESS
 import com.android.settings.applications.manageapplications.ManageApplications.LIST_TYPE_WRITE_SETTINGS
 import com.android.settings.spa.app.AllAppListPageProvider
 import com.android.settings.spa.app.appcompat.UserAspectRatioAppsPageProvider
-import com.android.settings.spa.app.display.PerAppRefreshRateAppsPageProvider
 import com.android.settings.spa.app.battery.BatteryOptimizationModeAppListPageProvider
 import com.android.settings.spa.app.specialaccess.AlarmsAndRemindersAppListProvider
 import com.android.settings.spa.app.specialaccess.AllFilesAccessAppListProvider
@@ -106,7 +103,6 @@ object ManageApplicationsUtil {
             ChangeNfcTagAppsActivity::class to LIST_TYPE_NFC_TAG_APPS,
             TurnScreenOnSettingsActivity::class to LIST_TYPE_TURN_SCREEN_ON,
             UserAspectRatioAppListActivity::class to LIST_TYPE_USER_ASPECT_RATIO_APPS,
-            PerAppRefreshRateAppListActivity::class to LIST_TYPE_PER_APP_REFRESH_RATE_APPS,
             NotificationExcludeSummarizationActivity::class to
                 LIST_TYPE_NOTIFICATION_EXCLUDE_SUMMARIZATION,
             NotificationExcludeClassificationActivity::class to
@@ -136,7 +132,6 @@ object ManageApplicationsUtil {
             LIST_TYPE_LONG_BACKGROUND_TASKS -> LongBackgroundTasksAppListProvider.getAppListRoute()
             LIST_TYPE_TURN_SCREEN_ON -> TurnScreenOnAppsAppListProvider.getAppListRoute()
             LIST_TYPE_USAGE_ACCESS -> UsageDataAppListProvider.getAppListRoute()
-            LIST_TYPE_PER_APP_REFRESH_RATE_APPS -> PerAppRefreshRateAppsPageProvider.name
             // TODO(b/292165031) enable once sorting is supported
             // LIST_TYPE_STORAGE -> StorageAppListPageProvider.Apps.name
             // LIST_TYPE_GAMES -> StorageAppListPageProvider.Games.name

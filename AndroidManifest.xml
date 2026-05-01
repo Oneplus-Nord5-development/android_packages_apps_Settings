@@ -254,24 +254,11 @@
             </intent-filter>
         </receiver>
 
-        <receiver
-            android:name=".display.PerAppRefreshRateBootReceiver"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
-
         <service
             android:name=".development.PageAgnosticNotificationService"
             android:enabled="true"
             android:exported="false"
             android:permission="android.permission.POST_NOTIFICATIONS"/>
-
-        <service
-            android:name=".display.PerAppRefreshRateService"
-            android:exported="false"
-            android:stopWithTask="false"/>
 
         <activity android:name=".development.PageAgnosticWarningActivity"
                   android:enabled="true"
