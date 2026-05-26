@@ -264,6 +264,7 @@ public class SettingsGateway {
             FirmwareVersionSettings.class.getName(),
             ManageAssist.class.getName(),
             ProcessStatsUi.class.getName(),
+            com.android.settings.applications.RunningServices.class.getName(),
             NotificationStation.class.getName(),
             LocationSettings.class.getName(),
             WifiScanningFragment.class.getName(),

@@ -2206,7 +2206,7 @@
                 <category android:name="android.intent.category.VOICE_LAUNCH" />
             </intent-filter>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.android.settings.applications.manageapplications.ManageApplications" />
+                android:value="com.android.settings.applications.RunningServices" />
             <meta-data android:name="com.android.settings.HIGHLIGHT_MENU_KEY"
                        android:value="@string/menu_key_apps"/>
             <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
